@@ -1,0 +1,21 @@
+button{ action 'decYear' target='view'} <
+= view.year
+button{ action 'incYear' target='view'} >
+
+button{ action 'decMonth' target='view'} <
+= view.displayMonth
+button{ action 'incMonth' target='view'} >
+.table-responsive
+  table.table.table-bordered
+    thead
+      tr
+        th Sunday
+        th Monday
+        th Tuesday
+        th Wednesday
+        th Thursday
+        th Friday
+        th Suterday
+
+
+= view.monthDays
