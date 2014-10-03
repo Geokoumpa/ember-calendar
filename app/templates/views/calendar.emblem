@@ -15,7 +15,28 @@ button{ action 'incMonth' target='view'} >
         th Wednesday
         th Thursday
         th Friday
-        th Suterday
+        th Saturday
+    tbody
+      = each week in view.monthDays
+        tr
+          = each day in week
+            = if day.selectable
+              td{ action 'pickDate' day target='view'}
+                = day.date
+                = if day.isSelected
+                  | selected
+
+            = else
+              td
+                = day.date
+                = if day.greyed
+                  |greyed
+
+= view Ember.Select content=view.hours value=view.hour
+|:
+= view Ember.Select content=view.minutes value=view.minute
+
+button{action 'apply' target='view'} Apply
 
 
-= view.monthDays
+= view.date

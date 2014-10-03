@@ -2,4 +2,6 @@ h2.title Test
 
 ==outlet
 
-= view 'calendar'
+= view 'calendar' value=date
+
+= date
