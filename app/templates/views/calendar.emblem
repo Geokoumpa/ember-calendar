@@ -1,21 +1,26 @@
-button{ action 'decYear' target='view'} <
-= view.year
-button{ action 'incYear' target='view'} >
-
-button{ action 'decMonth' target='view'} <
-= view.displayMonth
-button{ action 'incMonth' target='view'} >
+.row
+  .col-md-12
+    button.btn.btn-xs.btn-primary{ action 'decYear' target='view'} <
+    = view Ember.Select content=view.years value=view.year
+    button.btn.btn-xs.btn-primary{ action 'incYear' target='view'} >
+.row
+  .col-md-12
+      button.btn.btn-xs.btn-primary{ action 'decMonth' target='view'} <
+      = view Ember.Select content=view.months optionValuePath="content.firstObject" optionLabelPath="content.lastObject" value=view.month classNames="form-control"
+      button.btn.btn-xs.btn-primary{ action 'incMonth' target='view'} >
+.row
+  .col-md-12
 .table-responsive
   table.table.table-bordered
     thead
       tr
-        th Sunday
-        th Monday
-        th Tuesday
-        th Wednesday
-        th Thursday
-        th Friday
-        th Saturday
+        th Sun
+        th Mon
+        th Tue
+        th Wed
+        th Thu
+        th Fri
+        th Sat
     tbody
       = each week in view.monthDays
         tr
@@ -36,7 +41,7 @@ button{ action 'incMonth' target='view'} >
 |:
 = view Ember.Select content=view.minutes value=view.minute
 
-button{action 'apply' target='view'} Apply
+button.btn.btn-xs.btn-primary{action 'apply' target='view'} Apply
 
 
 = view.date

@@ -9,13 +9,18 @@ Calendar = Ember.View.extend
   month: moment().utc().month()
   year: moment().utc().year()
   selectedDate: moment.utc().date()
+
+  # options
   minDate: moment().subtract(1, 'days').utc()
   maxDate: moment().add(10, 'days').utc()
+  minYear: 2010
 
-  displayMonth: (->
-    months = ['January', 'February', 'March', 'April', 'May', 'June', 'Jule', 'August', 'September', 'October', 'November', 'December']
-    months[@get('month')]
-  ).property('month')
+
+  months: [[0, 'January'], [1, 'February'], [2, 'March'], [3, 'April'], [4, 'May'], [5, 'June'], [6, 'Jule'], [7, 'August'], [8, 'September'], [9, 'October'], [10, 'November'], [11, 'December']]
+  years: (->
+    [@get('minYear')..moment().year()].toArray().reverse()
+  ).property()
+
 
   monthDays: (->
     view = @
@@ -82,7 +87,8 @@ Calendar = Ember.View.extend
     decMonth: ->
       @decrementProperty('month') unless @get('month') == 0
     incYear: ->
-      @incrementProperty('year')
+      console.log @get('year') == moment().year()
+      @incrementProperty('year') unless @get('year') == moment().year()
     decYear: ->
       @decrementProperty('year')
     pickDate: (day)->
