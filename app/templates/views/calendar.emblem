@@ -1,47 +1,52 @@
-.row
-  .col-md-12
-    button.btn.btn-xs.btn-primary{ action 'decYear' target='view'} <
-    = view Ember.Select content=view.years value=view.year
-    button.btn.btn-xs.btn-primary{ action 'incYear' target='view'} >
-.row
-  .col-md-12
-      button.btn.btn-xs.btn-primary{ action 'decMonth' target='view'} <
-      = view Ember.Select content=view.months optionValuePath="content.firstObject" optionLabelPath="content.lastObject" value=view.month classNames="form-control"
-      button.btn.btn-xs.btn-primary{ action 'incMonth' target='view'} >
-.row
-  .col-md-12
-.table-responsive
-  table.table.table-bordered
-    thead
-      tr
-        th Sun
-        th Mon
-        th Tue
-        th Wed
-        th Thu
-        th Fri
-        th Sat
-    tbody
-      = each week in view.monthDays
-        tr
-          = each day in week
-            = if day.selectable
-              td{ action 'pickDate' day target='view'}
-                = day.date
-                = if day.isSelected
-                  | selected
+button{ action 'open' target="view"}
+  = view.date
+= if view.opened
+  .calendar-container
+    .row.pad-bot-3
+      .col-md-12.text-center
+        .btn-group
+          button.btn.btn-xs.btn-primary{ action 'decYear' target='view'} <
+          = view Ember.Select content=view.years value=view.year classNames="btn btn-xs btn-primary btn-mini"
+          button.btn.btn-xs.btn-primary{ action 'incYear' target='view'} >
+    .row.pad-bot-3
+      .col-md-12.text-center
+        .btn-group
+          button.btn.btn-xs.btn-primary{ action 'decMonth' target='view'} <
+          = view Ember.Select content=view.months optionValuePath="content.firstObject" optionLabelPath="content.lastObject" value=view.month classNames="btn btn-xs btn-primary btn-mini"
+          button.btn.btn-xs.btn-primary{ action 'incMonth' target='view'} >
+    .row
+      .col-md-12
+        .table-responsive
+          table.table.table-bordered
+            thead
+              tr
+                th Su
+                th Mo
+                th Tu
+                th We
+                th Th
+                th Fr
+                th Sa
+            tbody
+              = each week in view.monthDays
+                tr
+                  = each day in week
+                    = if day.selectable
+                      td.selectable{ action 'pickDate' day target='view'}
+                        span.label class=day.isSelected:label-primary = day.date
 
-            = else
-              td
-                = day.date
-                = if day.greyed
-                  |greyed
+                    = else
+                      td
+                        span class=day.greyed:greyed = day.date
+    .row.pad-bot-3
+      .col-md-12.text-center
+        .btn-group
+          = view Ember.Select content=view.hours value=view.hour classNames="btn btn-xs btn-default btn-mini"
+          button.btn.btn-xs.btn-default disabled=true :
+          = view Ember.Select content=view.minutes value=view.minute classNames="btn btn-xs btn-default btn-mini"
+    .row
+      .col-md-12.text-center
+        .btn-group
+          button.btn.btn-xs.btn-primary{action 'apply' target='view'} Ok
+          button.btn.btn-xs.btn-default{action 'cancel' target='view'} Cancel
 
-= view Ember.Select content=view.hours value=view.hour
-|:
-= view Ember.Select content=view.minutes value=view.minute
-
-button.btn.btn-xs.btn-primary{action 'apply' target='view'} Apply
-
-
-= view.date

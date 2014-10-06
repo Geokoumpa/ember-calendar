@@ -5,6 +5,7 @@ Calendar = Ember.View.extend
 
   hours: [0..24].toArray()
   minutes: [0..60].toArray()
+  opened: false
 
   month: moment().utc().month()
   year: moment().utc().year()
@@ -18,7 +19,7 @@ Calendar = Ember.View.extend
 
   months: [[0, 'January'], [1, 'February'], [2, 'March'], [3, 'April'], [4, 'May'], [5, 'June'], [6, 'Jule'], [7, 'August'], [8, 'September'], [9, 'October'], [10, 'November'], [11, 'December']]
   years: (->
-    [@get('minYear')..moment().year()].toArray().reverse()
+    [@get('minYear')..moment().year()].toArray()
   ).property()
 
 
@@ -82,20 +83,25 @@ Calendar = Ember.View.extend
 
 
   actions:
+    open: ->
+      @set("opened", true)
     incMonth: ->
       @incrementProperty('month') unless @get('month') == 11
     decMonth: ->
       @decrementProperty('month') unless @get('month') == 0
     incYear: ->
-      console.log @get('year') == moment().year()
       @incrementProperty('year') unless @get('year') == moment().year()
     decYear: ->
-      @decrementProperty('year')
+      @decrementProperty('year') unless @get('year') is @get('minYear')
     pickDate: (day)->
       @set('selectedDate', day.get('date'))
     apply: ->
       offset = (new Date()).getTimezoneOffset() / 60
       @set('date', moment(new Date(@get('year'), @get('month'), @get('selectedDate'), @get('hour'), @get('minute'))).subtract(offset, 'hours').utc())
+      @set('opened', false)
+    cancel: ->
+      @set('opened', false)
+      
 
 
   value: ((key, value, oldValue)->
