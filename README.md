@@ -6,14 +6,14 @@ as is.
 ## Installation
 
 Although one of the goals of this project is to become an ember-cli addon, manual installation
-is required at the moment. This is done by copying **calendar.coffee**, **calendar.emblem** and
+is required at the moment. This is done by copying **datetime-picker.coffee**, **datetime-picker.emblem** and
 what is included inside **app.css** to your project.
 
 ## Use
 
 The calendar is am Ember.js component, all you have to do to use it is to call it.
 
-  = datetime-picker value=date minDate=minDate maxDate=maxDate
+`= datetime-picker value=date minDate=minDate maxDate=maxDate`
 
 ## Options
 
