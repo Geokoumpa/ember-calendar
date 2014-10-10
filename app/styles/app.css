@@ -17,41 +17,71 @@ html, body {
   -moz-border-radius: 4px;
 }
 
-.calendar-container table td {
-  padding: 3px;
+.calendar-container table.table.table-bordered td {
+  padding: 5px;
   border: 1px solid #F3F3F3;
+  cursor: default;
+}
+.calendar-container table.table.table-bordered tr th {
+  padding: 5px;
+  border: 1px solid #F3F3F3;
+  font-size: 13px;
+}
+
+
+.calendar-container table td span.label.label-primary {
+  padding: 0.5em 0.8em;
+  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  color: white;
+}
+.calendar-container table.table.table-bordered td.selectable {
+  cursor: pointer;
 }
 .calendar-container table td span.label {
-  padding: 0.6em 0.9em;
-  -webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
-  -moz-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
-  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
-
-}
-.calendar-container table td.selectable {
-  cursor: pointer;
+  color: black;
+  padding: 0.5em 0.8em;
 }
 
 .calendar-container table td.selectable:hover span {
-  padding: 0.6em 0.9em;
-  background: #DDDDDD;
+  background: #F1F1F1;
+}
+.calendar-container table td.selectable:hover span.label-primary {
+  background: #428bca;
+  color: white;
 }
 
-.greyed{
+.calendar-container table td span.label.unavailable.greyed{
   color: #DDDDDD;
+  background: white;
+}
+.calendar-container table td span.label.unavailable{
+  background: #FFF7F7;
 }
 
-select.btn-mini {
-    height: auto;
-    line-height: 16px;
+
+.calendar-container select{
+  opacity: 0;
+  appearance: menulist-text;
+  -webkit-appearance: menulist-text;
+  -moz-appearance: menulist-text;
+  text-indent: 1px;
+  text-overflow: '';
+  padding-right: 16px;
+  height: auto;
+  line-height: 16px;
+  border: none;
+  cursor: pointer;
 }
 
-/* this is optional (see below) */
-select.btn {
-    -webkit-appearance: button;
-       -moz-appearance: button;
-            appearance: button;
-    padding-right: 16px;
+.calendar-container span.select{
+  position: absolute;
+  width: 80%;
+}
+
+.calendar-container select:focus{
+  outline: none;
 }
 
 .pad-bot-3{

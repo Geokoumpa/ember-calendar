@@ -1,51 +1,28 @@
 # Ember-calendar
 
-This README outlines the details of collaborating on this Ember application.
-
-A short introduction of this app could easily go here.
-
-## Prerequisites
-
-You will need the following things properly installed on your computer.
-
-* [Git](http://git-scm.com/)
-* [Node.js](http://nodejs.org/) (with NPM) and [Bower](http://bower.io/)
+This is a datetime picker based on moment.js. It is ready to be used in any Ember.js project
+as is.
 
 ## Installation
 
-* `git clone <repository-url>` this repository
-* change into the new directory
-* `npm install`
-* `bower install`
+Although one of the goals of this project is to become an ember-cli addon, manual installation
+is required at the moment. This is done by copying **calendar.coffee**, **calendar.emblem** and
+what is included inside **app.css** to your project.
 
-## Running / Development
+## Use
 
-* `ember server`
-* Visit your app at http://localhost:4200.
+The calendar is am Ember.js view, all you have to do to use it is to call it.
+  = view 'calendar' value=date
 
-### Code Generators
+## Options
 
-Make use of the many generators for code, try `ember help generate` for more details
+At the moment the following options are exposed:
 
-### Running Tests
+* minDate: Limit of minimum date to be selected (moment object)
+* maxDate: Limit of maximum date to be selected (moment object)
+* minYear: minimum available year  (number)
 
-* `ember test`
-* `ember test --server`
+## New features
 
-### Building
-
-* `ember build` (development)
-* `ember build --environment production` (production)
-
-### Deploying
-
-Specify what it takes to deploy your app.
-
-## Further Reading / Useful Links
-
-* ember: http://emberjs.com/
-* ember-cli: http://www.ember-cli.com/
-* Development Browser Extensions
-  * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
-  * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
-
+Although the calendar view is straightforward enough that extra features could be easily implemented,
+feel free to ask for new features at george.koumparoulis@gmail.com

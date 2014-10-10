@@ -1,7 +1,9 @@
 h2.title Test
 
 ==outlet
+button{action 'reduceMaxDate'} Reduce Max Date
+button{action 'increaseMinDate'} Increase Min Date
 
-= view 'calendar' value=date
+= datetime-picker value=date minDate=minDate maxDate=maxDate
 
 = date
